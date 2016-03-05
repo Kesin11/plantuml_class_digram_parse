@@ -1,0 +1,55 @@
+@startuml
+
+class Main {
+  run()
+}
+
+class Plantuml::Parser {
+  classes
+  relations
+  parse()
+  _extract_class_strings()
+  _extract_relation_strings()
+}
+
+class Plantuml::Factory {
+  create()
+  _check_is_method()
+  _check_is_variable()
+}
+
+class Plantuml::Class {
+  attribute
+  parents
+  variables
+  methods
+  build()
+}
+
+class Plantuml::Variable {
+  name
+  attribute
+  build()
+}
+
+class Plantuml::Method {
+  name
+  attribute
+  build()
+}
+
+class Plantuml::Relation {
+  from
+  to
+  name
+  build()
+}
+
+Class *-- Variable
+Class *-- Method
+Class <-- Relation
+Factory <-- Class
+Factory ..|> Variable
+Factory ..|> Method
+
+@enduml

@@ -1,0 +1,7 @@
+class Plantuml::Class {
+  attribute
+  parents
+  variables
+  methods
+  {static} build()
+}
