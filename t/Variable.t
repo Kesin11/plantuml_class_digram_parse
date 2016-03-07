@@ -5,14 +5,14 @@ use Test::More;
 use Plantuml::Variable;
 
 my $CLASS = 'Plantuml::Variable';
-BEGIN { use_ok $CLASS };
+BEGIN { use_ok 'Plantuml::Variable' };
 
-subtest "build" => sub {
+subtest "normal" => sub {
     my $fixture = 'foo';
 
     my $method = $CLASS->build($fixture);
-    is ($relation->get_name, 'foo', 'name');
-    is ($relation->get_attribute, undef, 'attribute');
+    is ($method->get_name, 'foo', 'name');
+    is ($method->get_attribute, '', 'attribute');
 };
 
 done_testing;
