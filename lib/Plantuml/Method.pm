@@ -31,6 +31,9 @@ sub build {
     return $class->new($name, $attribute);
 }
 
+sub is_variable { 0 };
+sub is_method { 1 };
+
 sub is_static {
     my ($self) = @_;
 
