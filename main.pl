@@ -7,18 +7,28 @@ use File::Basename;
 use lib File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), ''));
 
 use Plantuml::Parser;
+use Plantuml::Relation;
+use Plantuml::Class;
 
 main();
-
-my $fh;
-my $string;
 
 sub main {
 
     my $text = _slurp('self_class_diagram.pu');
-    my $parser = Plantuml::Parser->parse($string);
-    use Data::Dumper; warn Dumper $parser->get_classes;
-    use Data::Dumper; warn Dumper $parser->get_relations;
+    my $parser = Plantuml::Parser->parse($text);
+    my $class_strings = $parser->get_classes;
+    my $relation_strings = $parser->get_relations;
+    my $relations = +[ map { Plantuml::Relation->build($_) } @$relation_strings ];
+    my $classes = +[ map { Plantuml::Class->build($_) } @$class_strings ];
+
+    use Data::Dumper; warn Dumper $classes;
+    use Data::Dumper; warn Dumper $relations;
+
+    use Data::Dumper; warn Dumper "parents:";
+    for my $class (@$classes){
+        use Data::Dumper; warn Dumper $class->get_name ,$class->get_parents();
+    }
+
 }
 
 sub _slurp {
