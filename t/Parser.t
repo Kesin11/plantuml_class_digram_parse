@@ -18,12 +18,12 @@ subtest "_extract_class()" => sub {
 'class Plantuml::Parser {
   classes
   relations
-  parse()
+  {static} parse()
   _extract_class_strings()
   _extract_relation_strings()
 }',
 'class Plantuml::Factory {
-  create()
+  {static} create()
   _check_is_method()
   _check_is_variable()
 }',

@@ -34,7 +34,7 @@ sub parse {
 sub _extract_class_strings {
     my ($class, $string) = @_;
 
-    my @class_strings = $string =~ /class.*?{.*?}/sg;
+    my @class_strings = $string =~ /class.*?{.+?\n}/sg; # '\n}' for capture nest bracket
     return \@class_strings;
 }
 
