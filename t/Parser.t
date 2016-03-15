@@ -5,6 +5,7 @@ use Test::More;
 use Plantuml::Parser;
 use t::Util qw/load_fixture/;
 
+my $CLASS = 'Plantuml::Parser';
 BEGIN { use_ok 'Plantuml::Parser' };
 
 my $fixture = load_fixture('all.pu');
@@ -50,7 +51,7 @@ subtest "_extract_class()" => sub {
   build()
 }',
     ];
-    is_deeply(Plantuml::Parser->_extract_class($fixture), $expect);
+    is_deeply($CLASS->_extract_class_strings($fixture), $expect);
 };
 
 subtest "_extract_relation()" => sub {
@@ -62,7 +63,7 @@ subtest "_extract_relation()" => sub {
 'Factory ..|> Variable',
 'Factory ..|> Method'
     ];
-    is_deeply(Plantuml::Parser->_extract_relation($fixture), $expect);
+    is_deeply($CLASS->_extract_relation_strings($fixture), $expect);
 };
 
 done_testing;

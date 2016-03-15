@@ -14,25 +14,31 @@ relations
 __PACKAGE__->mk_ro_accessors(@self_valiables);
 
 sub new {
-    my ($class, $string) = @_;
-    my $attr = +{};
+    my ($class, $class_strings, $relation_strings) = @_;
+    my $attr = +{
+        classes => $class_strings,
+        relations => $relation_strings,
+    };
     return $class->SUPER::new($attr);
 }
 
 sub parse {
-    my ($class, $string) = @_;
+    my ($class, $text) = @_;
 
-    return $class->new();
+    my $class_strings = $class->_extract_class_strings($text);
+    my $relation_strings = $class->_extract_relation_strings($text);
+
+    return $class->new($class_strings, $relation_strings);
 }
 
-sub _extract_class {
+sub _extract_class_strings {
     my ($class, $string) = @_;
 
     my @class_strings = $string =~ /class.*?{.*?}/sg;
     return \@class_strings;
 }
 
-sub _extract_relation {
+sub _extract_relation_strings {
     my ($class, $string) = @_;
 
     my $relation_strings = +[];
