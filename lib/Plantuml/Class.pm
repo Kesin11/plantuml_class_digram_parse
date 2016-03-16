@@ -63,7 +63,7 @@ sub build {
 sub _get_class_name {
     my ($class, $class_name_string) = @_;
 
-    my ($class_name) = $class_name_string =~ /class\s+([\w|:]+)\s+\{/;
+    my ($class_name) = $class_name_string =~ /class\s+([\w|:]+)\s+.*\{/;
     return $class_name;
 }
 

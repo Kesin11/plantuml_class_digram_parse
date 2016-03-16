@@ -19,6 +19,10 @@ subtest "private_methods" => sub {
         $string = 'class Plantuml::Class::Foo::Long::Long {';
         $expect = 'Plantuml::Class::Foo::Long::Long';
         is ($CLASS->_get_class_name($string), $expect, 'Long class name');
+
+        $string = 'class Plantuml::Class << D >> {';
+        $expect = 'Plantuml::Class';
+        is ($CLASS->_get_class_name($string), $expect, 'class name with specific spot');
     };
 
     subtest "_get_class_attribute" => sub {
