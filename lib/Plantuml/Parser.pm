@@ -16,7 +16,7 @@ __PACKAGE__->mk_ro_accessors(@self_valiables);
 sub new {
     my ($class, $class_strings, $relation_strings) = @_;
     my $attr = +{
-        classes => $class_strings,
+        classes   => $class_strings,
         relations => $relation_strings,
     };
     return $class->SUPER::new($attr);
@@ -25,8 +25,8 @@ sub new {
 sub parse {
     my ($class, $text) = @_;
 
-    my $filtered_text = $class->_remove_commentout($text);
-    my $class_strings = $class->_extract_class_strings($filtered_text);
+    my $filtered_text    = $class->_remove_commentout($text);
+    my $class_strings    = $class->_extract_class_strings($filtered_text);
     my $relation_strings = $class->_extract_relation_strings($filtered_text);
 
     return $class->new($class_strings, $relation_strings);

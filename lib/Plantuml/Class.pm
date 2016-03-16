@@ -20,11 +20,11 @@ __PACKAGE__->mk_ro_accessors(@self_valiables);
 sub new {
     my ($class, $name, $attribute, $variables, $methods, $relations) = @_;
     my $attr = +{
-        name => $name || '',
+        name      => $name      || '',
         attribute => $attribute || '',
-        variables => ($variables && scalar @$variables) ? $variables : +[],
-        methods   => ($methods && scalar @$methods) ? $methods : +[],
-        relations => ($relations && scalar @$relations) ? $relations : +[],
+        variables => ( $variables && scalar @$variables ) ? $variables : +[],
+        methods   => ( $methods   && scalar @$methods )   ? $methods   : +[],
+        relations => ( $relations && scalar @$relations ) ? $relations : +[],
     };
     return $class->SUPER::new($attr);
 }
@@ -35,9 +35,9 @@ sub build {
     my @lines = split(/\n/, $class_string);
     my $class_name_string = shift @lines;
 
-    my $class_name = $class->_get_class_name($class_name_string);
+    my $class_name      = $class->_get_class_name($class_name_string);
     my $class_attribute = $class->_get_class_attribute($class_name_string);
-    my $class_relations = $class->_get_relations($class_name, $relations);
+    my $class_relations = $class->_get_relations( $class_name, $relations );
 
     # variables and methods
     my ($class_variables, $class_methods) = (+[], +[]);
@@ -47,8 +47,8 @@ sub build {
         next unless $build_class;
 
         my $instance = $build_class->build($line);
-        push(@$class_variables, $instance) if $instance->is_variable;
-        push(@$class_methods, $instance) if $instance->is_method;
+        push( @$class_variables, $instance ) if $instance->is_variable;
+        push( @$class_methods,   $instance ) if $instance->is_method;
     }
 
     return $class->new(

@@ -16,7 +16,7 @@ __PACKAGE__->mk_ro_accessors(@self_valiables);
 sub new {
     my ($class, $name, $attribute) = @_;
     my $attr = +{
-        name => $name || '',
+        name      => $name      || '',
         attribute => $attribute || '',
     };
     return $class->SUPER::new($attr);
@@ -25,14 +25,14 @@ sub new {
 sub build {
     my ($class, $string) = @_;
 
-    my ($name) = $string =~ /(\w+)\(.*\)/;
+    my ($name)      = $string =~ /(\w+)\(.*\)/;
     my ($attribute) = $string =~ /\{(\w+)\}/;
 
     return $class->new($name, $attribute);
 }
 
-sub is_variable { 0 };
-sub is_method { 1 };
+sub is_variable { 0 }
+sub is_method   { 1 }
 
 sub is_static {
     my ($self) = @_;
