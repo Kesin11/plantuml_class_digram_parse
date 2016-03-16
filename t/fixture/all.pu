@@ -3,6 +3,11 @@
 class Base {
 }
 
+/'
+class CommentOutClass {
+}
+'/
+
 class Main {
   run()
 }
@@ -47,6 +52,11 @@ class Plantuml::Relation {
   name
   build()
 }
+
+/'
+class CommentOutClass {
+}
+'/
 
 Class *-- Variable
 Class *-- Method

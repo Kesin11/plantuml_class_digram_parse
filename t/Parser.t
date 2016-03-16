@@ -10,8 +10,11 @@ BEGIN { use_ok 'Plantuml::Parser' };
 
 my $fixture = load_fixture('all.pu');
 
-subtest "_extract_class()" => sub {
-    my $expect = +[
+subtest "parse()" => sub {
+    my $parser = $CLASS->parse($fixture);
+
+    subtest "_extract_class_strings()" => sub {
+        my $expect_classes = +[
 'class Base {
 }',
 'class Main {
@@ -52,20 +55,22 @@ subtest "_extract_class()" => sub {
   name
   build()
 }',
-    ];
-    is_deeply($CLASS->_extract_class_strings($fixture), $expect);
+        ];
+        is_deeply($parser->get_classes, $expect_classes);
+    };
+
+    subtest "_extract_relation()" => sub {
+        my $expect = +[
+    'Class *-- Variable',
+    'Class *-- Method',
+    'Class <-- Relation',
+    'Factory <-- Class',
+    'Factory ..|> Variable',
+    'Factory ..|> Method'
+        ];
+        is_deeply($CLASS->_extract_relation_strings($fixture), $expect);
+    };
 };
 
-subtest "_extract_relation()" => sub {
-    my $expect = +[
-'Class *-- Variable',
-'Class *-- Method',
-'Class <-- Relation',
-'Factory <-- Class',
-'Factory ..|> Variable',
-'Factory ..|> Method'
-    ];
-    is_deeply($CLASS->_extract_relation_strings($fixture), $expect);
-};
 
 done_testing;

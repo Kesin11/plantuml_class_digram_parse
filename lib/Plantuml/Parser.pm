@@ -25,10 +25,18 @@ sub new {
 sub parse {
     my ($class, $text) = @_;
 
-    my $class_strings = $class->_extract_class_strings($text);
-    my $relation_strings = $class->_extract_relation_strings($text);
+    my $filtered_text = $class->_remove_commentout($text);
+    my $class_strings = $class->_extract_class_strings($filtered_text);
+    my $relation_strings = $class->_extract_relation_strings($filtered_text);
 
     return $class->new($class_strings, $relation_strings);
+}
+
+sub _remove_commentout {
+    my ($class, $string) = @_;
+
+    $string =~ s/\/'.*?'\///sg;
+    return $string;
 }
 
 sub _extract_class_strings {
