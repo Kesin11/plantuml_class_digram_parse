@@ -54,7 +54,7 @@ sub build {
     my ($class, $string) = @_;
 
     my ($symbol, $left, $right);
-    $string =~ /(\w+)\s+(.+?)\s+(\w+)/;
+    $string =~ /([\w|:]+)\s+(.+?)\s+([\w|:]+)/;
 
     $left   = $1;
     $symbol = $2;

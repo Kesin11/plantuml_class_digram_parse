@@ -80,4 +80,13 @@ subtest "<-- association " => sub {
     is ($relation->get_to, 'Left', 'to');
 };
 
+subtest "extract class name" => sub {
+    my $fixture = 'Plantuml <|-- Plantuml::Class';
+
+    my $relation = $CLASS->build($fixture);
+    is ($relation->get_name, 'generalization', 'relation name');
+    is ($relation->get_from, 'Plantuml::Class', 'from');
+    is ($relation->get_to, 'Plantuml', 'to');
+};
+
 done_testing;
