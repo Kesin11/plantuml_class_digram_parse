@@ -71,4 +71,13 @@ subtest "--* composite" => sub {
     is ($relation->get_to, 'Right', 'to');
 };
 
+subtest "<-- association " => sub {
+    my $fixture = 'Left <-- Right';
+
+    my $relation = $CLASS->build($fixture);
+    is ($relation->get_name, 'association', 'relation name');
+    is ($relation->get_from, 'Right', 'from');
+    is ($relation->get_to, 'Left', 'to');
+};
+
 done_testing;

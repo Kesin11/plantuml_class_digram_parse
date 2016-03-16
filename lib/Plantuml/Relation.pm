@@ -15,6 +15,8 @@ to
 __PACKAGE__->mk_ro_accessors(@self_valiables);
 
 my $symbol_name_map = +{
+    '<--'  => 'association',
+    '-->'  => 'association',
     '<|--' => 'generalization',
     '--|>' => 'generalization',
     '<|..' => 'realization',
@@ -26,11 +28,13 @@ my $symbol_name_map = +{
 };
 
 my $symbol_is_from_right_side = +{
+    '<--'  => 1,
     '<|--' => 1,
     '<|..' => 1,
     'o--'  => 1,
     '*--'  => 1,
     '--|>' => 0,
+    '-->'  => 0,
     '..|>' => 0,
     '--o'  => 0,
     '--*'  => 0,
