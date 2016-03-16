@@ -1,0 +1,72 @@
+@startuml
+
+/'
+class Main {
+  run()
+}
+'/
+
+/' クラスと関係の文字列を抽出。ClassBuilderに渡してオブジェクトをもらう '/
+/' relationcはこの中でビルドしてClassBuilderに渡す'/
+class Plantuml::Parser {
+  classes
+  relations
+  ____
+  {static} parse()
+
+  .. private method ..
+  _extract_class_strings()
+  _extract_relation_strings()
+}
+
+class Plantuml::Factory {
+  {static} create()
+  _check_is_method()
+  _check_is_variable()
+}
+
+/'クラス全体の文字列と、Relationオブジェクト全てをもらってクラスを組み立てる'/
+/'こいつがFactoryを使う'/
+class Plantuml::Class {
+  name
+  attribute
+  variables
+  methods
+  relations
+  {static} build()
+}
+
+class Plantuml::Variable {
+  name
+  attribute
+  {static} build()
+  is_method()
+  is_variable()
+}
+
+class Plantuml::Method {
+  name
+  attribute
+  {static} build()
+  'check method'
+  is_static()
+  is_abstract()
+  is_method()
+  is_variable()
+}
+
+class Plantuml::Relation << (R,orchid) >> {
+  from
+  to
+  name
+  {static} build()
+}
+
+Plantuml::Class *-- Plantuml::Variable
+Plantuml::Class *-- Plantuml::Method
+Plantuml::Class <-- Plantuml::Relation
+Plantuml::Factory <-- Plantuml::Class
+Plantuml::Factory ..|> Plantuml::Variable
+Plantuml::Factory ..|> Plantuml::Method
+
+@enduml

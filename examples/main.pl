@@ -4,7 +4,7 @@ use utf8;
 
 use File::Spec;
 use File::Basename;
-use lib File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), ''));
+use lib File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), '../'));
 
 use Plantuml::Parser;
 use Plantuml::Relation;
@@ -14,7 +14,7 @@ main();
 
 sub main {
 
-    my $text = _slurp('self_class_diagram.pu');
+    my $text = _slurp(File::Spec->catdir(dirname(__FILE__), 'pu', 'self_class_diagram.pu'));
     my $parser = Plantuml::Parser->parse($text);
     my $class_strings = $parser->get_classes;
     my $relation_strings = $parser->get_relations;
