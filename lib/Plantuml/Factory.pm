@@ -24,7 +24,7 @@ sub create {
 sub _check_is_separator {
     my ($class, $string) = @_;
 
-    return 1 if ($string =~ /^(--|__|==|\.\.)/);
+    return 1 if ($string =~ /(--|__|==|\.\.)/);
     return 0;
 }
 
