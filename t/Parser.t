@@ -12,6 +12,8 @@ my $fixture = load_fixture('all.pu');
 
 subtest "_extract_class()" => sub {
     my $expect = +[
+'class Base {
+}',
 'class Main {
   run()
 }',

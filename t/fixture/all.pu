@@ -1,5 +1,8 @@
 @startuml
 
+class Base {
+}
+
 class Main {
   run()
 }
