@@ -28,6 +28,31 @@ my $fixtures = +[
         expect => 'Plantuml::Variable',
         description => 'normal variable',
     },
+    +{
+        string => '--',
+        expect => undef,
+        description => 'separator line',
+    },
+    +{
+        string => '==',
+        expect => undef,
+        description => 'separator double line',
+    },
+    +{
+        string => '__',
+        expect => undef,
+        description => 'separator under line',
+    },
+    +{
+        string => '.. separate text ..',
+        expect => undef,
+        description => 'separator dots with text',
+    },
+    +{
+        string => "'comment'",
+        expect => undef,
+        description => 'comment',
+    },
 ];
 
 subtest "create" => sub {
