@@ -14,9 +14,8 @@ use Plantuml::Class;
 main();
 
 sub main {
-
-    my $sample_file_path = File::Spec->catdir(dirname(__FILE__), 'pu', 'self_class_diagram.pu');
-    my $text             = _slurp($sample_file_path);
+    my $file_path = $ARGV[0] || File::Spec->catdir(dirname(__FILE__), 'pu', 'self_class_diagram.pu');
+    my $text             = _slurp($file_path);
     my $parser           = Plantuml::Parser->parse($text);
     my $class_strings    = $parser->get_classes;
     my $relation_strings = $parser->get_relations;
