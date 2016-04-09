@@ -43,10 +43,9 @@ sub build {
     my ($class_variables, $class_methods) = (+[], +[]);
     for my $line (@lines) {
         chomp $line;
-        my $build_class = Plantuml::Factory->create($line);
-        next unless $build_class;
+        my $instance = Plantuml::Factory->create($line);
+        next unless $instance;
 
-        my $instance = $build_class->build($line);
         push( @$class_variables, $instance ) if $instance->is_variable;
         push( @$class_methods,   $instance ) if $instance->is_method;
     }

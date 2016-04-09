@@ -58,7 +58,12 @@ my $fixtures = +[
 subtest "create" => sub {
     for my $fixture (@$fixtures){
         my $got = $CLASS->create($fixture->{string});
-        is ($got, $fixture->{expect}, $fixture->{description});
+        if (defined $fixture->{expect}) {
+            isa_ok ($got, $fixture->{expect}, $fixture->{description});
+        }
+        else {
+            is ($got, $fixture->{expect}, $fixture->{description});
+        }
     }
 };
 

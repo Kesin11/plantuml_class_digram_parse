@@ -15,8 +15,8 @@ sub create {
     return undef if $class->_check_is_separator($string);
     return undef if $class->_check_is_comment($string);
 
-    return $METHOD   if $class->_check_is_method($string);
-    return $VARIABLE if $class->_check_is_variable($string);
+    return $METHOD->build($string)   if $class->_check_is_method($string);
+    return $VARIABLE->build($string) if $class->_check_is_variable($string);
 
     return undef;
 }
