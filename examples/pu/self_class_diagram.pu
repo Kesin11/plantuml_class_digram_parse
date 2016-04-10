@@ -6,8 +6,8 @@ class Main {
 }
 '/
 
-/' クラスと関係の文字列を抽出。ClassBuilderに渡してオブジェクトをもらう '/
-/' relationcはこの中でビルドしてClassBuilderに渡す'/
+/' クラスと関係の文字列を抽出。Plantuml::Classに渡してオブジェクトをもらう '/
+/' relationはこの中でビルドしてPlantuml::Classに渡す'/
 class Plantuml::Parser {
   classes
   relations
@@ -19,14 +19,7 @@ class Plantuml::Parser {
   _extract_relation_strings()
 }
 
-class Plantuml::Factory {
-  {static} create()
-  _check_is_method()
-  _check_is_variable()
-}
-
 /'クラス全体の文字列と、Relationオブジェクト全てをもらってクラスを組み立てる'/
-/'こいつがFactoryを使う'/
 class Plantuml::Class {
   name
   attribute
@@ -36,7 +29,13 @@ class Plantuml::Class {
   {static} build()
 }
 
-class Plantuml::Variable {
+class Plantuml::Class::Factory {
+  {static} create()
+  _check_is_method()
+  _check_is_variable()
+}
+
+abstract class Plantuml::Class::Base {
   name
   attribute
   {static} build()
@@ -44,7 +43,15 @@ class Plantuml::Variable {
   is_variable()
 }
 
-class Plantuml::Method {
+class Plantuml::Class::Variable {
+  name
+  attribute
+  {static} build()
+  is_method()
+  is_variable()
+}
+
+class Plantuml::Class::Method {
   name
   attribute
   {static} build()
@@ -62,11 +69,13 @@ class Plantuml::Relation << (R,orchid) >> {
   {static} build()
 }
 
-Plantuml::Class *-- Plantuml::Variable
-Plantuml::Class *-- Plantuml::Method
+Plantuml::Class *-- Plantuml::Class::Variable
+Plantuml::Class *-- Plantuml::Class::Method
 Plantuml::Class <-- Plantuml::Relation
-Plantuml::Factory <-- Plantuml::Class
-Plantuml::Factory ..|> Plantuml::Variable
-Plantuml::Factory ..|> Plantuml::Method
+Plantuml::Class::Factory <-- Plantuml::Class
+Plantuml::Class::Factory ..|> Plantuml::Class::Variable
+Plantuml::Class::Factory ..|> Plantuml::Class::Method
+Plantuml::Class::Variable -down-|> Plantuml::Class::Base
+Plantuml::Class::Method -down-|> Plantuml::Class::Base
 
 @enduml
