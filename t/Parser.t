@@ -27,7 +27,7 @@ subtest "parse()" => sub {
   _extract_class_strings()
   _extract_relation_strings()
 }',
-'class Plantuml::Factory {
+'class Plantuml::Class::Factory {
   {static} create()
   _check_is_method()
   _check_is_variable()
@@ -39,12 +39,17 @@ subtest "parse()" => sub {
   methods
   build()
 }',
-'class Plantuml::Variable {
+'abstract class Plantuml::Class::Base {
   name
   attribute
   build()
 }',
-'class Plantuml::Method {
+'class Plantuml::Class::Variable {
+  name
+  attribute
+  build()
+}',
+'class Plantuml::Class::Method {
   name
   attribute
   build()
@@ -61,12 +66,14 @@ subtest "parse()" => sub {
 
     subtest "_extract_relation()" => sub {
         my $expect = +[
-    'Class *-- Variable',
-    'Class *-- Method',
+    'Class *-- Class::Variable',
+    'Class *-- Class::Method',
     'Class <-- Relation',
-    'Factory <-- Class',
-    'Factory ..|> Variable',
-    'Factory ..|> Method'
+    'Class::Factory <-- Class',
+    'Class::Factory ..|> Class::Variable',
+    'Class::Factory ..|> Class::Method',
+    'Class::Variable -down-|> Class::Base',
+    'Class::Method   -down-|> Class::Base',
         ];
         is_deeply($CLASS->_extract_relation_strings($fixture), $expect);
     };

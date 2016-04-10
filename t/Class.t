@@ -29,11 +29,8 @@ subtest "private_methods" => sub {
         my $class_line = 'class Plantuml::Class {';
         is ($CLASS->_get_class_attribute($class_line), '', 'normal class');
 
-        my $abstract_class_line = '{abstract} class Plantuml::Class {';
+        my $abstract_class_line = 'abstract class Plantuml::Class {';
         is ($CLASS->_get_class_attribute($abstract_class_line), 'abstract', 'abstract class');
-
-        my $static_class_line = '{static} class Plantuml::Class {';
-        is ($CLASS->_get_class_attribute($static_class_line), 'static', 'static class');
     };
 
     subtest "_get_relations" => sub {
@@ -63,7 +60,7 @@ subtest "public methods" => sub {
 
     subtest "build" => sub {
         is ($class_instance->get_name, $class_name, 'class name');
-        is ($class_instance->get_attribute, 'static', 'class attribute');
+        is ($class_instance->get_attribute, 'abstract', 'class attribute');
         is_deeply ($class_instance->get_variables, +[
             Plantuml::Variable->new('name'),
             Plantuml::Variable->new('attribute'),

@@ -1,4 +1,4 @@
-{static} class Plantuml::Class {
+abstract class Plantuml::Class {
   name
   attribute
   variables

@@ -42,7 +42,7 @@ sub _remove_commentout {
 sub _extract_class_strings {
     my ($class, $string) = @_;
 
-    my @class_strings = $string =~ /class.*?{.*?\n}/sg; # '\n}' for capture nest bracket
+    my @class_strings = $string =~ /(?:abstract\s+)*class.*?{.*?\n}/sg; # '\n}' for capture nest bracket
     return \@class_strings;
 }
 
@@ -52,11 +52,11 @@ sub _extract_relation_strings {
     my $relation_strings = +[];
     my @lines = split('\n', $string);
     for my $line (@lines){
-        # *-- , <-- , <|-- , <|..
-        if ($line =~ /(\*|<)\|?(--|\.\.)/) {
+        # *- , <- , <|- , <|.
+        if ($line =~ /(\*|<)\|?(-|\.)/) {
             push(@$relation_strings, $line);
-        # --* , --> , --|> , ..|>
-        } elsif ($line =~ /(--|\.\.)\|?(\*|>)/) {
+        # -* , -> , -|> , .|>
+        } elsif ($line =~ /(-|\.)\|?(\*|>)/) {
             push(@$relation_strings, $line);
         }
     }

@@ -69,7 +69,7 @@ sub _get_class_name {
 sub _get_class_attribute {
     my ($class, $class_name_string) = @_;
 
-    my ($attribute) = $class_name_string =~ /^\{(\w+)\}/;
+    my ($attribute) = $class_name_string =~ /^(\w+)\s*class/;
     return $attribute || '';
 }
 
@@ -91,12 +91,6 @@ sub get_parents {
     } @{$self->get_relations} ];
 
     return +[ map { $_->get_to } @$parent_relations ];
-}
-
-sub is_static {
-    my ($self) = @_;
-
-    return ($self->get_attribute eq 'static') ? 1 : 0;
 }
 
 sub is_abstract {

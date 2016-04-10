@@ -98,4 +98,13 @@ subtest "with arrow direction" => sub {
     is ($relation->get_to, 'Plantuml', 'to');
 };
 
+subtest "with arrow direction" => sub {
+    my $fixture = 'Plantuml::Class::Method -down-|> Plantuml::Class::Base';
+
+    my $relation = $CLASS->build($fixture);
+    is ($relation->get_name, 'generalization', 'relation name');
+    is ($relation->get_from, 'Plantuml::Class::Method', 'from');
+    is ($relation->get_to, 'Plantuml::Class::Base', 'to');
+};
+
 done_testing;
