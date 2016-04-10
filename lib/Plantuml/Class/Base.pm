@@ -1,4 +1,4 @@
-package Plantuml::Variable;
+package Plantuml::Class::Base;
 
 use strict;
 use warnings;
@@ -25,13 +25,23 @@ sub new {
 sub build {
     my ($class, $string) = @_;
 
-    my ($name)      = $string =~ /(\w+)/;
-    my ($attribute) = $string =~ /\{(\w+)\}/;
+    my $name      = '';
+    my $attribute = '';
 
     return $class->new($name, $attribute);
 }
 
-sub is_variable { 1 }
+sub is_variable { 0 }
 sub is_method   { 0 }
+
+sub is_static {
+    my ($self) = @_;
+    return 0;
+}
+
+sub is_abstract {
+    my ($self) = @_;
+    return 0;
+}
 
 1;

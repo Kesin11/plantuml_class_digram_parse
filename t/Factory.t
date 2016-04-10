@@ -2,30 +2,30 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
-use Plantuml::Factory;
-my $CLASS = 'Plantuml::Factory';
+use Plantuml::Class::Factory;
+my $CLASS = 'Plantuml::Class::Factory';
 
-BEGIN { use_ok 'Plantuml::Factory'};
+BEGIN { use_ok 'Plantuml::Class::Factory'};
 
 my $fixtures = +[
     +{
         string => 'foo()',
-        expect => 'Plantuml::Method',
+        expect => 'Plantuml::Class::Method',
         description => 'normal method',
     },
     +{
         string => '{static} foo()',
-        expect => 'Plantuml::Method',
+        expect => 'Plantuml::Class::Method',
         description => 'static method',
     },
     +{
         string => '{abstract} foo()',
-        expect => 'Plantuml::Method',
+        expect => 'Plantuml::Class::Method',
         description => 'abstract method',
     },
     +{
         string => 'foo',
-        expect => 'Plantuml::Variable',
+        expect => 'Plantuml::Class::Variable',
         description => 'normal variable',
     },
     +{

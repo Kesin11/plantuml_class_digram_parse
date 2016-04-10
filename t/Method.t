@@ -3,8 +3,8 @@ use warnings;
 use utf8;
 use Test::More;
 
-my $CLASS = 'Plantuml::Method';
-BEGIN { use_ok 'Plantuml::Method' };
+my $CLASS = 'Plantuml::Class::Method';
+BEGIN { use_ok 'Plantuml::Class::Method' };
 
 subtest "normal" => sub {
     my $fixture = 'foo()';

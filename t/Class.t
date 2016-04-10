@@ -3,8 +3,8 @@ use warnings;
 use utf8;
 use Test::More;
 use Plantuml::Relation;
-use Plantuml::Variable;
-use Plantuml::Method;
+use Plantuml::Class::Variable;
+use Plantuml::Class::Method;
 use t::Util qw/load_fixture/;
 
 my $CLASS = 'Plantuml::Class';
@@ -62,15 +62,15 @@ subtest "public methods" => sub {
         is ($class_instance->get_name, $class_name, 'class name');
         is ($class_instance->get_attribute, 'abstract', 'class attribute');
         is_deeply ($class_instance->get_variables, +[
-            Plantuml::Variable->new('name'),
-            Plantuml::Variable->new('attribute'),
-            Plantuml::Variable->new('variables'),
-            Plantuml::Variable->new('methods'),
-            Plantuml::Variable->new('relations'),
+            Plantuml::Class::Variable->new('name'),
+            Plantuml::Class::Variable->new('attribute'),
+            Plantuml::Class::Variable->new('variables'),
+            Plantuml::Class::Variable->new('methods'),
+            Plantuml::Class::Variable->new('relations'),
         ], 'class variables');
         is_deeply ($class_instance->get_methods, +[
-            Plantuml::Method->new('build', 'static'),
-            Plantuml::Method->new('get_parents'),
+            Plantuml::Class::Method->new('build', 'static'),
+            Plantuml::Class::Method->new('get_parents'),
         ], 'class metdhos');
         is_deeply ($class_instance->get_relations, $relations, 'class relations');
     };

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use utf8;
 
-use Plantuml::Factory;
+use Plantuml::Class::Factory;
 use parent qw/Class::Accessor::Fast/;
 __PACKAGE__->follow_best_practice;
 
@@ -43,7 +43,7 @@ sub build {
     my ($class_variables, $class_methods) = (+[], +[]);
     for my $line (@lines) {
         chomp $line;
-        my $instance = Plantuml::Factory->create($line);
+        my $instance = Plantuml::Class::Factory->create($line);
         next unless $instance;
 
         push( @$class_variables, $instance ) if $instance->is_variable;

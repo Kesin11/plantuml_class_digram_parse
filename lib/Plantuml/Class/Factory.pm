@@ -1,13 +1,13 @@
-package Plantuml::Factory;
+package Plantuml::Class::Factory;
 
 use strict;
 use warnings;
 use utf8;
-use Plantuml::Method;
-use Plantuml::Variable;
+use Plantuml::Class::Method;
+use Plantuml::Class::Variable;
 
-my $METHOD = 'Plantuml::Method';
-my $VARIABLE = 'Plantuml::Variable';
+my $METHOD = 'Plantuml::Class::Method';
+my $VARIABLE = 'Plantuml::Class::Variable';
 
 sub create {
     my ($class, $string) = @_;
