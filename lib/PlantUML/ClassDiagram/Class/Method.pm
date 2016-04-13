@@ -1,10 +1,10 @@
-package Plantuml::Class::Method;
+package PlantUML::ClassDiagram::Class::Method;
 
 use strict;
 use warnings;
 use utf8;
 
-use parent qw/Plantuml::Class::Base/;
+use parent qw/PlantUML::ClassDiagram::Class::Base/;
 __PACKAGE__->follow_best_practice;
 
 my @self_valiables = qw/

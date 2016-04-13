@@ -1,10 +1,10 @@
-package Plantuml::Class;
+package PlantUML::ClassDiagram::Class;
 
 use strict;
 use warnings;
 use utf8;
 
-use Plantuml::Class::Factory;
+use PlantUML::ClassDiagram::Class::Factory;
 use parent qw/Class::Accessor::Fast/;
 __PACKAGE__->follow_best_practice;
 
@@ -43,7 +43,7 @@ sub build {
     my ($class_variables, $class_methods) = (+[], +[]);
     for my $line (@lines) {
         chomp $line;
-        my $instance = Plantuml::Class::Factory->create($line);
+        my $instance = PlantUML::ClassDiagram::Class::Factory->create($line);
         next unless $instance;
 
         push( @$class_variables, $instance ) if $instance->is_variable;

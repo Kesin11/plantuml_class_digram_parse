@@ -1,4 +1,4 @@
-package Plantuml::Relation;
+package PlantUML::ClassDiagram::Relation;
 
 use strict;
 use warnings;

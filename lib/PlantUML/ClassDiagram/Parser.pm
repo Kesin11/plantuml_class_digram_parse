@@ -1,4 +1,4 @@
-package Plantuml::Parser;
+package PlantUML::ClassDiagram::Parser;
 
 use strict;
 use warnings;

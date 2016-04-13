@@ -2,10 +2,10 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
-use Plantuml::Relation;
+use PlantUML::ClassDiagram::Relation;
 
-my $CLASS = 'Plantuml::Relation';
-BEGIN { use_ok 'Plantuml::Relation' };
+my $CLASS = 'PlantUML::ClassDiagram::Relation';
+BEGIN { use_ok 'PlantUML::ClassDiagram::Relation' };
 
 subtest "<|-- generalization" => sub {
     my $fixture = 'Left <|-- Right';
@@ -81,30 +81,30 @@ subtest "<-- association " => sub {
 };
 
 subtest "extract class name" => sub {
-    my $fixture = 'Plantuml <|-- Plantuml::Class';
+    my $fixture = 'PlantUML::ClassDiagram <|-- PlantUML::ClassDiagram::Class';
 
     my $relation = $CLASS->build($fixture);
     is ($relation->get_name, 'generalization', 'relation name');
-    is ($relation->get_from, 'Plantuml::Class', 'from');
-    is ($relation->get_to, 'Plantuml', 'to');
+    is ($relation->get_from, 'PlantUML::ClassDiagram::Class', 'from');
+    is ($relation->get_to, 'PlantUML::ClassDiagram', 'to');
 };
 
 subtest "with arrow direction" => sub {
-    my $fixture = 'Plantuml <|-up- Plantuml::Class';
+    my $fixture = 'PlantUML::ClassDiagram <|-up- PlantUML::ClassDiagram::Class';
 
     my $relation = $CLASS->build($fixture);
     is ($relation->get_name, 'generalization', 'relation name');
-    is ($relation->get_from, 'Plantuml::Class', 'from');
-    is ($relation->get_to, 'Plantuml', 'to');
+    is ($relation->get_from, 'PlantUML::ClassDiagram::Class', 'from');
+    is ($relation->get_to, 'PlantUML::ClassDiagram', 'to');
 };
 
 subtest "with arrow direction" => sub {
-    my $fixture = 'Plantuml::Class::Method -down-|> Plantuml::Class::Base';
+    my $fixture = 'PlantUML::ClassDiagram::Class::Method -down-|> PlantUML::ClassDiagram::Class::Base';
 
     my $relation = $CLASS->build($fixture);
     is ($relation->get_name, 'generalization', 'relation name');
-    is ($relation->get_from, 'Plantuml::Class::Method', 'from');
-    is ($relation->get_to, 'Plantuml::Class::Base', 'to');
+    is ($relation->get_from, 'PlantUML::ClassDiagram::Class::Method', 'from');
+    is ($relation->get_to, 'PlantUML::ClassDiagram::Class::Base', 'to');
 };
 
 done_testing;

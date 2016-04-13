@@ -1,4 +1,4 @@
-abstract class Plantuml::Class {
+abstract class PlantUML::ClassDiagram::Class {
   name
   attribute
   variables

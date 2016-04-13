@@ -1,4 +1,4 @@
-package Plantuml::Class::Base;
+package PlantUML::ClassDiagram::Class::Base;
 
 use strict;
 use warnings;

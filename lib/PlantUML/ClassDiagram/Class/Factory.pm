@@ -1,13 +1,13 @@
-package Plantuml::Class::Factory;
+package PlantUML::ClassDiagram::Class::Factory;
 
 use strict;
 use warnings;
 use utf8;
-use Plantuml::Class::Method;
-use Plantuml::Class::Variable;
+use PlantUML::ClassDiagram::Class::Method;
+use PlantUML::ClassDiagram::Class::Variable;
 
-my $METHOD = 'Plantuml::Class::Method';
-my $VARIABLE = 'Plantuml::Class::Variable';
+my $METHOD = 'PlantUML::ClassDiagram::Class::Method';
+my $VARIABLE = 'PlantUML::ClassDiagram::Class::Variable';
 
 sub create {
     my ($class, $string) = @_;

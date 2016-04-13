@@ -6,22 +6,22 @@ use File::Spec;
 use File::Basename;
 use lib File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), '../lib'));
 
-use Plantuml::Parser;
-use Plantuml::Relation;
-use Plantuml::Class;
+use PlantUML::ClassDiagram::Parser;
+use PlantUML::ClassDiagram::Relation;
+use PlantUML::ClassDiagram::Class;
 
-# dump Plantuml::Class objects, Plantuml::Relation objects and class parents.
+# dump PlantUML::ClassDiagram::Class objects, PlantUML::ClassDiagram::Relation objects and class parents.
 main();
 
 sub main {
     my $file_path = $ARGV[0] || File::Spec->catdir(dirname(__FILE__), 'pu', 'self_class_diagram.pu');
     my $text             = _slurp($file_path);
-    my $parser           = Plantuml::Parser->parse($text);
+    my $parser           = PlantUML::ClassDiagram::Parser->parse($text);
     my $class_strings    = $parser->get_classes;
     my $relation_strings = $parser->get_relations;
 
-    my $relations = +[ map { Plantuml::Relation->build($_) } @$relation_strings ];
-    my $classes   = +[ map { Plantuml::Class->build($_, $relations) } @$class_strings ];
+    my $relations = +[ map { PlantUML::ClassDiagram::Relation->build($_) } @$relation_strings ];
+    my $classes   = +[ map { PlantUML::ClassDiagram::Class->build($_, $relations) } @$class_strings ];
 
     use Data::Dumper; warn Dumper $classes;
     use Data::Dumper; warn Dumper $relations;

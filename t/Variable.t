@@ -2,10 +2,10 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
-use Plantuml::Class::Variable;
+use PlantUML::ClassDiagram::Class::Variable;
 
-my $CLASS = 'Plantuml::Class::Variable';
-BEGIN { use_ok 'Plantuml::Class::Variable' };
+my $CLASS = 'PlantUML::ClassDiagram::Class::Variable';
+BEGIN { use_ok 'PlantUML::ClassDiagram::Class::Variable' };
 
 subtest "normal" => sub {
     my $fixture = 'foo';

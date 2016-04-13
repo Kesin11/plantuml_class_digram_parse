@@ -2,11 +2,11 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
-use Plantuml::Parser;
+use PlantUML::ClassDiagram::Parser;
 use t::Util qw/load_fixture/;
 
-my $CLASS = 'Plantuml::Parser';
-BEGIN { use_ok 'Plantuml::Parser' };
+my $CLASS = 'PlantUML::ClassDiagram::Parser';
+BEGIN { use_ok 'PlantUML::ClassDiagram::Parser' };
 
 my $fixture = load_fixture('all.pu');
 
@@ -20,41 +20,41 @@ subtest "parse()" => sub {
 'class Main {
   run()
 }',
-'class Plantuml::Parser {
+'class PlantUML::ClassDiagram::Parser {
   classes
   relations
   {static} parse()
   _extract_class_strings()
   _extract_relation_strings()
 }',
-'class Plantuml::Class::Factory {
+'class PlantUML::ClassDiagram::Class::Factory {
   {static} create()
   _check_is_method()
   _check_is_variable()
 }',
-'class Plantuml::Class {
+'class PlantUML::ClassDiagram::Class {
   attribute
   parents
   variables
   methods
   build()
 }',
-'abstract class Plantuml::Class::Base {
+'abstract class PlantUML::ClassDiagram::Class::Base {
   name
   attribute
   build()
 }',
-'class Plantuml::Class::Variable {
+'class PlantUML::ClassDiagram::Class::Variable {
   name
   attribute
   build()
 }',
-'class Plantuml::Class::Method {
+'class PlantUML::ClassDiagram::Class::Method {
   name
   attribute
   build()
 }',
-'class Plantuml::Relation {
+'class PlantUML::ClassDiagram::Relation {
   from
   to
   name
