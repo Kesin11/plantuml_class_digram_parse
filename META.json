@@ -1,7 +1,7 @@
 {
    "abstract" : "It's new $module",
    "author" : [
-      "@gmail.com>"
+      "kesin1202000@gmail.com>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.0.1, CPAN::Meta::Converter version 2.150005",
@@ -55,13 +55,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/Kesin11/plantuml_class_digram_parser/issues"
+         "web" : "https://github.com/Kesin11/plantuml_class_digram_parse/issues"
       },
-      "homepage" : "https://github.com/Kesin11/plantuml_class_digram_parser",
+      "homepage" : "https://github.com/Kesin11/plantuml_class_digram_parse",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/Kesin11/plantuml_class_digram_parser.git",
-         "web" : "https://github.com/Kesin11/plantuml_class_digram_parser"
+         "url" : "git://github.com/Kesin11/plantuml_class_digram_parse.git",
+         "web" : "https://github.com/Kesin11/plantuml_class_digram_parse"
       }
    },
    "version" : "0.01",
