@@ -6,7 +6,7 @@ use File::Spec;
 use File::Basename;
 use lib File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), '../lib'));
 
-use PlantUML::ClassDiagram::Parser;
+use PlantUML::ClassDiagram::Parse;
 use PlantUML::ClassDiagram::Relation;
 use PlantUML::ClassDiagram::Class;
 
@@ -16,7 +16,7 @@ main();
 sub main {
     my $file_path = $ARGV[0] || File::Spec->catdir(dirname(__FILE__), 'pu', 'self_class_diagram.pu');
     my $text             = _slurp($file_path);
-    my $parser           = PlantUML::ClassDiagram::Parser->parse($text);
+    my $parser           = PlantUML::ClassDiagram::Parse->parse($text);
     my $class_strings    = $parser->get_classes;
     my $relation_strings = $parser->get_relations;
 

@@ -1,8 +1,10 @@
-package PlantUML::ClassDiagram::Parser;
+package PlantUML::ClassDiagram::Parse;
 
 use strict;
 use warnings;
 use utf8;
+
+our $VERSION = "0.01";
 
 use parent qw/Class::Accessor::Fast/;
 __PACKAGE__->follow_best_practice;
@@ -67,3 +69,30 @@ sub _extract_relation_strings {
 
 
 1;
+
+=encoding utf-8
+
+=head1 NAME
+
+PlantUML::ClassDiagram::Parse - It's new $module
+
+=head1 SYNOPSIS
+
+    use PlantUML::ClassDiagram::Parse;
+
+=head1 DESCRIPTION
+
+PlantUML::ClassDiagram::Parse is ...
+
+=head1 LICENSE
+
+Copyright (C) Kenta Kase.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+Kenta Kase E<lt>kesin1202000@gmail.comE<gt>
+
+=cut
