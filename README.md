@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Kesin11/plantuml_class_digram_parse.svg?branch=master)](https://travis-ci.org/Kesin11/plantuml_class_digram_parse)
 # NAME
 
 PlantUML::ClassDiagram::Parse - It's new $module
