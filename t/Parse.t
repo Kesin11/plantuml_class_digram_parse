@@ -2,11 +2,11 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
-use PlantUML::ClassDiagram::Parser;
+use PlantUML::ClassDiagram::Parse;
 use t::Util qw/load_fixture/;
 
-my $CLASS = 'PlantUML::ClassDiagram::Parser';
-BEGIN { use_ok 'PlantUML::ClassDiagram::Parser' };
+my $CLASS = 'PlantUML::ClassDiagram::Parse';
+BEGIN { use_ok 'PlantUML::ClassDiagram::Parse' };
 
 my $fixture = load_fixture('all.pu');
 
@@ -20,7 +20,7 @@ subtest "parse()" => sub {
 'class Main {
   run()
 }',
-'class PlantUML::ClassDiagram::Parser {
+'class PlantUML::ClassDiagram::Parse {
   classes
   relations
   {static} parse()

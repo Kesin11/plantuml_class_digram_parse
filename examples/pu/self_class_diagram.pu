@@ -8,7 +8,7 @@ class Main {
 
 /' クラスと関係の文字列を抽出。PlantUML::ClassDiagram::Classに渡してオブジェクトをもらう '/
 /' relationはこの中でビルドしてPlantUML::ClassDiagram::Classに渡す'/
-class PlantUML::ClassDiagram::Parser {
+class PlantUML::ClassDiagram::Parse {
   classes
   relations
   ____

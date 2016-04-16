@@ -4,7 +4,7 @@ class Main {
   run()
 }
 
-class PlantUML::ClassDiagram::Parser {
+class PlantUML::ClassDiagram::Parse {
   classes
   relations
   parse()
