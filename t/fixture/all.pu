@@ -64,13 +64,13 @@ class CommentOutClass {
 }
 '/
 
-Class *-- Class::Variable
-Class *-- Class::Method
-Class <-- Relation
-Class::Factory <-- Class
-Class::Factory ..|> Class::Variable
-Class::Factory ..|> Class::Method
-Class::Variable -down-|> Class::Base
-Class::Method   -down-|> Class::Base
+PlantUML::ClassDiagram::Class *-- PlantUML::ClassDiagram::Class::Variable
+PlantUML::ClassDiagram::Class *-- PlantUML::ClassDiagram::Class::Method
+PlantUML::ClassDiagram::Class <-- PlantUML::ClassDiagram::Relation
+PlantUML::ClassDiagram::Class::Factory <-- PlantUML::ClassDiagram::Class
+PlantUML::ClassDiagram::Class::Factory ..|> PlantUML::ClassDiagram::Class::Variable
+PlantUML::ClassDiagram::Class::Factory ..|> PlantUML::ClassDiagram::Class::Method
+PlantUML::ClassDiagram::Class::Variable -down-|> PlantUML::ClassDiagram::Class::Base
+PlantUML::ClassDiagram::Class::Method -down-|> PlantUML::ClassDiagram::Class::Base
 
 @enduml

@@ -3,6 +3,8 @@ package PlantUML::ClassDiagram::Parse;
 use strict;
 use warnings;
 use utf8;
+use PlantUML::ClassDiagram::Class;
+use PlantUML::ClassDiagram::Relation;
 
 our $VERSION = "0.01";
 
@@ -12,14 +14,22 @@ __PACKAGE__->follow_best_practice;
 my @self_valiables = qw/
 classes
 relations
+class_strings
+relation_strings
 /;
 __PACKAGE__->mk_ro_accessors(@self_valiables);
 
 sub new {
     my ($class, $class_strings, $relation_strings) = @_;
+
+    my $relations = +[ map { PlantUML::ClassDiagram::Relation->build($_) } @{$relation_strings} ];
+    my $classes   = +[ map { PlantUML::ClassDiagram::Class->build($_, $relations) } @{$class_strings} ];
+
     my $attr = +{
-        classes   => $class_strings,
-        relations => $relation_strings,
+        class_strings    => $class_strings,
+        relation_strings => $relation_strings,
+        classes          => $classes,
+        relations        => $relations,
     };
     return $class->SUPER::new($attr);
 }
