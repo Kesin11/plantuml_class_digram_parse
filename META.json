@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "PlantUML class diagram syntax parser",
    "author" : [
       "@gmail.com>"
    ],
