@@ -84,15 +84,207 @@ sub _extract_relation_strings {
 
 =head1 NAME
 
-PlantUML::ClassDiagram::Parse - It's new $module
+PlantUML::ClassDiagram::Parse - PlantUML class diagram syntax parser
 
 =head1 SYNOPSIS
 
-    use PlantUML::ClassDiagram::Parse;
+    use List::Util qw/first/;
+    use Data::Section::Simple qw/get_data_section/;
+
+    my $pu_string = get_data_section('synopsis.pu');
+    my $parse = PlantUML::ClassDiagram::Parse->parse($pu_string);
+
+    my $classes = $parse->get_classes;
+
+    # bless( {
+    #    'relations' => [
+    #         bless( {
+    #              'from' => 'Foo',
+    #              'to' => 'Base',
+    #              'name' => 'generalization'
+    #            }, 'PlantUML::ClassDiagram::Relation' )
+    #     ],
+    #    'variables' => [
+    #         bless( {
+    #              'attribute' => '',
+    #              'name' => 'foo'
+    #            }, 'PlantUML::ClassDiagram::Class::Variable' )
+    #    ],
+    #    'attribute' => '',
+    #    'name' => 'Base',
+    #    'methods' => [
+    #         bless( {
+    #                'name' => 'new',
+    #                'attribute' => 'static'
+    #              }, 'PlantUML::ClassDiagram::Class::Method' ),
+    #         bless( {
+    #                'name' => 'bar',
+    #                'attribute' => 'abstract'
+    #              }, 'PlantUML::ClassDiagram::Class::Method' )
+    #     ]
+    #  }, 'PlantUML::ClassDiagram::Class' ),
+    # bless( {
+    #    'methods' => [
+    #           bless( {
+    #                'name' => 'new',
+    #                'attribute' => 'static'
+    #              }, 'PlantUML::ClassDiagram::Class::Method' ),
+    #           bless( {
+    #                'name' => 'bar',
+    #                'attribute' => ''
+    #              }, 'PlantUML::ClassDiagram::Class::Method' )
+    #         ],
+    #    'name' => 'Foo',
+    #    'relations' => [
+    #                     $VAR1->[0]{'relations'}[0]
+    #                   ],
+    #    'variables' => [
+    #             bless( {
+    #                  'name' => 'foo',
+    #                  'attribute' => ''
+    #                }, 'PlantUML::ClassDiagram::Class::Variable' )
+    #       ],
+    #    'attribute' => ''
+    #  }, 'PlantUML::ClassDiagram::Class' )
+
+    my $foo = first { $_->get_name eq 'Foo' } @$classes;
+    $foo->get_parents;
+
+    # [ 'Base' ];
+
+    __DATA__
+    @@ synopsis.pu
+    @startuml
+
+    class Base {
+      foo
+
+      {static} new()
+      {abstract} bar()
+    }
+    class Foo {
+      foo
+
+      {static} new()
+      bar()
+    }
+    Foo --|> Base
+
+    @enduml
 
 =head1 DESCRIPTION
 
-PlantUML::ClassDiagram::Parse is ...
+PlantUML::ClassDiagram::Parse is parser for PlantUML class diagram syntax
+It generate objects that represent class structure written in class diagram.
+
+=head2 WAY TO USE
+
+Generate perl module using PlantUML::ClassDiagram::Class objects.
+In fact you will also use template engine (ex: Text::Xslate) together.
+
+Sample script:
+    TODO
+
+=head2 class
+
+PlantUML::ClassDiagram::Class - represent each class
+
+=over
+
+=item get_name
+
+own class name
+
+=item get_attribute
+
+'' or 'abstract'
+
+=item get_variables
+
+PlantUML::ClassDiagram::Class::Variable objects
+
+=item get_methods
+
+PlantUML::ClassDiagram::Class::Method objects
+
+=item relations
+
+PlantUML::ClassDiagram::Relation objects related in own class
+
+=item get_parents
+
+parent class names it guessed from 'generalization' relation
+
+=back
+
+=head2 method
+
+PlantUML::ClassDiagram::Class::Method - represent each method
+
+=over
+
+=item get_name
+
+own method name
+
+=item get_attribute
+
+'' or 'abstract' or 'static'
+
+=back
+
+=head2 variable
+
+PlantUML::ClassDiagram::Class::Variable - represent each member variable
+
+=over
+
+=item get_name
+
+own method name
+
+=item get_attribute
+
+'' or 'abstract' or 'static'
+
+=back
+
+=head2 relations
+
+PlantUML::ClassDiagram::Relation - represent class to class relation
+
+=over
+
+=item get_name
+
+own relation name
+
+=item get_from
+
+from class name
+
+=item get_to
+
+to class name
+
+=back
+
+Only support follow relation syntax
+
+=over
+
+=item association
+
+=item generalization
+
+=item realization
+
+=item aggregation
+
+=item composite
+
+=back
+
 
 =head1 LICENSE
 
