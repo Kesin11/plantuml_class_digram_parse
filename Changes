@@ -2,6 +2,9 @@ Revision history for Perl extension PlantUML-ClassDiagram-Parse
 
 {{$NEXT}}
 
+0.02 2016-04-26T15:42:58Z
+    - Push to CPAN
+
 0.01 2016-04-26T15:36:44Z
 
     - original version
