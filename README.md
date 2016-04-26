@@ -106,27 +106,27 @@ Sample script:
 
 PlantUML::ClassDiagram::Class - represent each class
 
-- get\_name
+- get\_name()
 
     own class name
 
-- get\_attribute
+- get\_attribute()
 
     '' or 'abstract'
 
-- get\_variables
+- get\_variables()
 
     PlantUML::ClassDiagram::Class::Variable objects
 
-- get\_methods
+- get\_methods()
 
     PlantUML::ClassDiagram::Class::Method objects
 
-- relations
+- get\_relations()
 
     PlantUML::ClassDiagram::Relation objects related in own class
 
-- get\_parents
+- get\_parents()
 
     parent class names it guessed from 'generalization' relation
 
@@ -134,11 +134,11 @@ PlantUML::ClassDiagram::Class - represent each class
 
 PlantUML::ClassDiagram::Class::Method - represent each method
 
-- get\_name
+- get\_name()
 
     own method name
 
-- get\_attribute
+- get\_attribute()
 
     '' or 'abstract' or 'static'
 
@@ -146,11 +146,11 @@ PlantUML::ClassDiagram::Class::Method - represent each method
 
 PlantUML::ClassDiagram::Class::Variable - represent each member variable
 
-- get\_name
+- get\_name()
 
     own method name
 
-- get\_attribute
+- get\_attribute()
 
     '' or 'abstract' or 'static'
 
@@ -158,15 +158,15 @@ PlantUML::ClassDiagram::Class::Variable - represent each member variable
 
 PlantUML::ClassDiagram::Relation - represent class to class relation
 
-- get\_name
+- get\_name()
 
     own relation name
 
-- get\_from
+- get\_from()
 
     from class name
 
-- get\_to
+- get\_to()
 
     to class name
 

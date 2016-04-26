@@ -191,27 +191,27 @@ PlantUML::ClassDiagram::Class - represent each class
 
 =over
 
-=item get_name
+=item get_name()
 
 own class name
 
-=item get_attribute
+=item get_attribute()
 
 '' or 'abstract'
 
-=item get_variables
+=item get_variables()
 
 PlantUML::ClassDiagram::Class::Variable objects
 
-=item get_methods
+=item get_methods()
 
 PlantUML::ClassDiagram::Class::Method objects
 
-=item relations
+=item get_relations()
 
 PlantUML::ClassDiagram::Relation objects related in own class
 
-=item get_parents
+=item get_parents()
 
 parent class names it guessed from 'generalization' relation
 
@@ -223,11 +223,11 @@ PlantUML::ClassDiagram::Class::Method - represent each method
 
 =over
 
-=item get_name
+=item get_name()
 
 own method name
 
-=item get_attribute
+=item get_attribute()
 
 '' or 'abstract' or 'static'
 
@@ -239,11 +239,11 @@ PlantUML::ClassDiagram::Class::Variable - represent each member variable
 
 =over
 
-=item get_name
+=item get_name()
 
 own method name
 
-=item get_attribute
+=item get_attribute()
 
 '' or 'abstract' or 'static'
 
@@ -255,15 +255,15 @@ PlantUML::ClassDiagram::Relation - represent class to class relation
 
 =over
 
-=item get_name
+=item get_name()
 
 own relation name
 
-=item get_from
+=item get_from()
 
 from class name
 
-=item get_to
+=item get_to()
 
 to class name
 
