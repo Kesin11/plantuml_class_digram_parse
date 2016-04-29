@@ -100,7 +100,7 @@ Generate perl module using PlantUML::ClassDiagram::Class objects.
 In fact you will also use template engine (ex: Text::Xslate) together.
 
 Sample script:
-    TODO
+    See examples/generate\_pm\_sample.pl
 
 ## class
 
