@@ -6,7 +6,7 @@ use utf8;
 use PlantUML::ClassDiagram::Class;
 use PlantUML::ClassDiagram::Relation;
 
-our $VERSION = "0.02";
+our $VERSION = "0.1";
 
 use parent qw/Class::Accessor::Fast/;
 __PACKAGE__->follow_best_practice;
